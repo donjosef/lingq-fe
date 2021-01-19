@@ -1,0 +1,14 @@
+.form-inline {
+    justify-content: flex-end;
+}
+
+.btn-outline-info:hover {
+    background: inherit;
+    color: #029acf;
+}
+
+@media (max-width: 468px) {
+    .form-inline {
+        justify-content: flex-start;
+    }
+}
