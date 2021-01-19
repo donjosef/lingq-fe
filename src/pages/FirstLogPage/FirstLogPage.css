@@ -1,0 +1,17 @@
+.login-settings-page {
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-inline {
+    width: 320px;
+    justify-content: space-between;
+}
+
+.custom-select {
+    width: 150px !important;
+}
