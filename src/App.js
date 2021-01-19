@@ -1,26 +1,42 @@
-import React, {useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import FirstLogPage from './pages/FirstLogPage/FirstLogPage'
 import Layout from './components/Layout/Layout'
 import Courses from './pages/Courses/Courses'
+import { Route, Switch, Redirect, useHistory } from 'react-router-dom'
 
 import './App.css';
 
 function App() {
   const [firstLog, setFirstLog] = useState(!localStorage['lang'] || !localStorage['level'])
+  const history = useHistory()
 
   const handleLogin = () => {
     setFirstLog(false)
+    history.replace('/courses')
   }
 
   return (
     <div className="App">
       {firstLog ? (
-        <FirstLogPage onLogin={handleLogin} /> 
+        <>
+          <Switch>
+            <Route exact path="/">
+              <FirstLogPage onLogin={handleLogin} />
+            </Route>
+            <Route>
+              <h1>Not found</h1>
+            </Route>
+          </Switch>
+
+        </>
       ) : (
-        <Layout>
-          <Courses />
-        </Layout>
-      )}
+          <Layout>
+            <Route path="/courses">
+              <Courses />
+            </Route>
+            <Redirect to="/courses" />
+          </Layout>
+        )}
     </div>
   );
 }
