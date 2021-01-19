@@ -1,3 +1,7 @@
+.courses__controls {
+    justify-content: space-between;
+}
+
 .card__btn {
     width: 100%;
     display: block;
