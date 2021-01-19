@@ -7,13 +7,13 @@ const Courses = () => {
     const [courses, setCourses] = useState([])
     const [count, setCount] = useState(null)
 
-    const {langValue, levelValue, setLangValue, setLevelValue} = useSelect()
+    const { langValue, levelValue, setLangValue, setLevelValue } = useSelect()
 
     useEffect(() => {
-        if(langValue) { //everytime langValue changes set new value on localstorage
+        if (langValue) { //everytime langValue changes set new value on localstorage
             localStorage.lang = langValue
         }
-        if(levelValue) { //everytime levelValue changes set new value on localstorage
+        if (levelValue) { //everytime levelValue changes set new value on localstorage
             localStorage.level = levelValue
         }
         const lang = langValue || localStorage['lang']
@@ -30,12 +30,17 @@ const Courses = () => {
     return (
         <main className="container mt-5">
             <form className="form-inline courses__controls">
-                <Select type="lang" value={langValue} onChange={setLangValue}/>
-                <Select type="level" value={levelValue} onChange={setLevelValue}/>
+                <Select type="lang" value={langValue} onChange={setLangValue} />
+                <Select type="level" value={levelValue} onChange={setLevelValue} />
             </form>
+            {count && (
+                <h3 className="mt-3 mb-3">
+                    <small className="text-muted">{count} courses found</small>
+                </h3>
+            )}
             <section className="row">
                 {courses.map(course => (
-                    <div key={course.pk} className="card col-md-4 col-sm-6 mt-5">
+                    <div key={course.pk} className="card col-md-4 col-sm-6 mb-5">
                         <img src={course.imageUrl} className="card-img-top" alt={course.title} />
                         <div className="card-body">
                             <h5 className="card-title text-info">{course.title}</h5>
@@ -44,7 +49,7 @@ const Courses = () => {
                             <p className="card-text">Difficulty: {course.difficulty}</p>
                             <button className="card__btn btn btn-outline-primary">Start course</button>
                         </div>
-                   </div>
+                    </div>
                 ))}
             </section>
         </main>
