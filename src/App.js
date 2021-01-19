@@ -1,5 +1,6 @@
 import React, {useState, useEffect } from 'react'
 import FirstLogPage from './pages/FirstLogPage/FirstLogPage'
+import Courses from './pages/Courses/Courses'
 
 import './App.css';
 
@@ -12,7 +13,7 @@ function App() {
 
   return (
     <div className="App">
-      {firstLog ? <FirstLogPage onLogin={handleLogin} /> : 'COURSES'}
+      {firstLog ? <FirstLogPage onLogin={handleLogin} /> : <Courses />}
     </div>
   );
 }
