@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
+import Select from '../../components/Select/Select'
+import useSelect from '../../hooks/useSelect'
+
 import './FirstLogPage.css'
 
 function FirstLogPage({ onLogin }) {
-    const [langValue, setLangValue] = useState('')
-    const [levelValue, setLevelValue] = useState('')
+    const {langValue, levelValue, setLangValue, setLevelValue} = useSelect()    
 
     const handleSettings = () => {
         localStorage.lang = langValue
@@ -15,27 +17,8 @@ function FirstLogPage({ onLogin }) {
     return (
         <main className="container login-settings-page">
             <form className="form-inline">
-                <select
-                    value={langValue}
-                    onChange={(e) => setLangValue(e.target.value)}
-                    className="custom-select">
-                    <option>Select a language</option>
-                    <option value="de">German</option>
-                    <option value="es">Spanish</option>
-                </select>
-
-                <select
-                    value={levelValue}
-                    onChange={(e) => setLevelValue(e.target.value)}
-                    className="custom-select">
-                    <option>Select a level</option>
-                    <option value="1">Beginner 1</option>
-                    <option value="2">Beginner 2</option>
-                    <option value="3">Intermediate 1</option>
-                    <option value="4">Intermediate 2</option>
-                    <option value="5">Advanced 1</option>
-                    <option value="6">Advanced 2</option>
-                </select>
+                <Select type='lang' value={langValue} onChange={setLangValue}/>
+                <Select type='level' value={levelValue} onChange={setLevelValue}/>
             </form>
             <button 
                 disabled={!langValue || !levelValue}
