@@ -31,10 +31,10 @@ function App() {
         </>
       ) : (
           <Layout>
-            <Route path="/courses">
-              <Courses />
-            </Route>
-            <Redirect to="/courses" />
+            <Switch>
+              <Route path="/courses/:page?" component={Courses} />
+              <Redirect from="/" to="/courses" />
+            </Switch>
           </Layout>
         )}
     </div>
