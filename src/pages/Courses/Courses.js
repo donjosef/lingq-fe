@@ -2,12 +2,15 @@ import React, { useState, useEffect } from 'react'
 import Select from '../../components/Select/Select'
 import Pagination from 'react-js-pagination'
 import useSelect from '../../hooks/useSelect'
+import { useHistory, useParams } from 'react-router-dom'
 import './Courses.css'
 
 const Courses = () => {
     const [courses, setCourses] = useState([])
     const [count, setCount] = useState(null)
     const [activePage, setActivePage] = useState(1)
+    const history = useHistory()
+    const params = useParams()
 
     const { langValue, levelValue, setLangValue, setLevelValue } = useSelect()
 
@@ -21,7 +24,7 @@ const Courses = () => {
         const lang = langValue || localStorage['lang']
         const level = levelValue || localStorage['level']
 
-        fetch(`http://localhost:4000/courses/${lang}/${level}/${activePage}`)
+        fetch(`http://localhost:4000/courses/${lang}/${level}/${params.page || activePage}`)
             .then(res => res.json())
             .then(courses => {
                 setCourses(courses.results)
@@ -31,6 +34,7 @@ const Courses = () => {
 
     const handleChangePage = (page) => {
         setActivePage(page)
+        history.push('/courses/' + page)
     }
 
     return (
