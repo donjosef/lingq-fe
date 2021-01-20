@@ -21,13 +21,13 @@ const Courses = () => {
         const lang = langValue || localStorage['lang']
         const level = levelValue || localStorage['level']
 
-        fetch(`http://localhost:4000/courses/${lang}/${level}`)
+        fetch(`http://localhost:4000/courses/${lang}/${level}/${activePage}`)
             .then(res => res.json())
             .then(courses => {
                 setCourses(courses.results)
                 setCount(courses.count)
             })
-    }, [langValue, levelValue])
+    }, [langValue, levelValue, activePage])
 
     const handleChangePage = (page) => {
         setActivePage(page)
