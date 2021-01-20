@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import Select from '../../components/Select/Select'
+import Pagination from 'react-js-pagination'
 import useSelect from '../../hooks/useSelect'
 import './Courses.css'
 
 const Courses = () => {
     const [courses, setCourses] = useState([])
     const [count, setCount] = useState(null)
+    const [activePage, setActivePage] = useState(1)
 
     const { langValue, levelValue, setLangValue, setLevelValue } = useSelect()
 
@@ -26,6 +28,10 @@ const Courses = () => {
                 setCount(courses.count)
             })
     }, [langValue, levelValue])
+
+    const handleChangePage = (page) => {
+        setActivePage(page)
+    }
 
     return (
         <main className="container mt-5">
@@ -51,6 +57,19 @@ const Courses = () => {
                         </div>
                     </div>
                 ))}
+            </section>
+            <section>
+                <Pagination
+                    activePage={activePage}
+                    totalItemsCount={Math.ceil(count / 20) * 10}
+                    pageRangeDisplayed={3}
+                    onChange={handleChangePage}
+                    prevPageText="Prev"
+                    nextPageText="Next"
+                    itemClass="pagination__item"
+                    linkClass="text-info"
+                    activeClass="pagination__item--active"
+                />
             </section>
         </main>
     )

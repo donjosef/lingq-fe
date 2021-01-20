@@ -1,4 +1,5 @@
 .courses__controls {
+    max-width: 90%;
     justify-content: space-between;
 }
 
@@ -9,4 +10,27 @@
 
 .card-text {
     font-size: 1rem;
+}
+
+/*PAGINATION*/
+
+.pagination {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    width: 450px;
+    max-width: 90%;
+    display: flex;
+    margin: 50px auto;
+    justify-content: center;
+}
+
+.pagination__item {
+    font-size: 1.5em;
+    padding: 12px;
+    border: 1px solid #eee;
+}
+
+.pagination__item--active {
+    background: #e9e9e9;
 }
