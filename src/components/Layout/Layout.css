@@ -1,10 +1,18 @@
+.navbar {
+    position: fixed !important;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
 .navbar__form {
     justify-content: flex-end;
 }
 
 .btn-outline-info:hover {
-    background: inherit;
-    color: #029acf;
+    background: inherit !important;
+    color: #029acf !important;
 }
 
 @media (max-width: 468px) {
