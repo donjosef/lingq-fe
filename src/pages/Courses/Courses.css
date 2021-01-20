@@ -1,3 +1,7 @@
+.container-spacing {
+    margin-top: 7rem;
+}
+
 .courses__controls {
     max-width: 90%;
     justify-content: space-between;

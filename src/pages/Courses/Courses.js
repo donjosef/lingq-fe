@@ -34,7 +34,7 @@ const Courses = () => {
     }
 
     return (
-        <main className="container mt-5">
+        <main className="container container-spacing">
             <form className="form-inline courses__controls">
                 <Select type="lang" value={langValue} onChange={setLangValue} />
                 <Select type="level" value={levelValue} onChange={setLevelValue} />
