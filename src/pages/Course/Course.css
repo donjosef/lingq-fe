@@ -1,0 +1,9 @@
+.course__title {
+    font-size: 2rem;
+}
+
+@media (max-width: 575px) {
+    .course__title {
+        font-size: 1.6rem;
+    }
+}
