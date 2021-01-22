@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Card from '../../components/Card/Card'
+import CourseDetails from '../../components/CourseDetails/CourseDetails'
 import { useParams } from 'react-router-dom'
 
 import './Course.css'
@@ -21,10 +22,15 @@ const Course = (props) => {
     return (
         <main className="container container-spacing">
             <h1 className="course__title mb-5">{course.title}</h1>
-            <section className="row">
-                {course.lessons && course.lessons.map(lesson => (
-                    <Card key={lesson.contentId} data={lesson} type="lesson" onBtnClick={() => { }} />
-                ))}
+            <section className="row align-items-start">
+                <section className="row col-8 course__left">
+                    {course.lessons && course.lessons.map(lesson => (
+                        <Card key={lesson.contentId} data={lesson} type="lesson" onBtnClick={() => { }} />
+                    ))}
+                </section>
+                <section className="ml-3 col-4 course__right">
+                    <CourseDetails course={course} />
+                </section>
             </section>
         </main>
     )
