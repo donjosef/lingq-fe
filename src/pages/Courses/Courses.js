@@ -38,6 +38,10 @@ const Courses = () => {
         history.push('/courses/' + page)
     }
 
+    const handleStartCourse = (pk) => {
+        history.push('/course/' + pk)
+    }
+
     return (
         <main className="container">
             <form className="form-inline courses__controls">
@@ -55,6 +59,7 @@ const Courses = () => {
                         key={course.pk}
                         data={course}
                         type='course'
+                        onBtnClick={handleStartCourse}
                     />
                 ))}
             </section>
