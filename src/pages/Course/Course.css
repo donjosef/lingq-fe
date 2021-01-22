@@ -2,6 +2,22 @@
     font-size: 2rem;
 }
 
+.course__right {
+    border: 1px solid #eee;
+    border-radius: 3px;
+    padding-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+    .course__left {
+        min-width: 100%;
+    }
+    
+    .course__right {
+        display: none;
+    }
+}
+
 @media (max-width: 575px) {
     .course__title {
         font-size: 1.6rem;
