@@ -1,3 +1,9 @@
-.App {
-  text-align: center;
+.container-spacing {
+    margin-top: 7rem;
+}
+
+@media (max-width: 575px) {
+    .container-spacing {
+        margin-top: 12rem;
+    }
 }
