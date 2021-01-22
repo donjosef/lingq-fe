@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Select from '../../components/Select/Select'
+import Card from '../../components/Card/Card'
 import Pagination from 'react-js-pagination'
 import useSelect from '../../hooks/useSelect'
 import { useHistory, useParams } from 'react-router-dom'
@@ -38,7 +39,7 @@ const Courses = () => {
     }
 
     return (
-        <main className="container container-spacing">
+        <main className="container">
             <form className="form-inline courses__controls">
                 <Select type="lang" value={langValue} onChange={setLangValue} />
                 <Select type="level" value={levelValue} onChange={setLevelValue} />
@@ -50,16 +51,11 @@ const Courses = () => {
             )}
             <section className="row">
                 {courses.map(course => (
-                    <div key={course.pk} className="card col-md-4 col-sm-6 mb-5">
-                        <img src={course.imageUrl} className="card-img-top" alt={course.title} />
-                        <div className="card-body">
-                            <h5 className="card-title text-info">{course.title}</h5>
-                            <p className="card-text">Lessons: {course.lessonsCount}</p>
-                            <p className="card-text">Level: {course.level}</p>
-                            <p className="card-text">Difficulty: {course.difficulty}</p>
-                            <button className="card__btn btn btn-outline-primary">Start course</button>
-                        </div>
-                    </div>
+                    <Card
+                        key={course.pk}
+                        data={course}
+                        type='course'
+                    />
                 ))}
             </section>
             <section>
