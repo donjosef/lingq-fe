@@ -1,0 +1,28 @@
+.course__btn {
+    width: 100%;
+    display: block;
+}
+
+.card-text {
+    font-size: 1rem;
+}
+
+.card__left {
+    width: 33.33%;
+}
+
+.card__right {
+    width: 66.66%;
+}
+
+@media (max-width: 576px) {
+    .card__left {
+        width: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    .card__right {
+        width: 100%;
+    }
+}
