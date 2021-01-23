@@ -13,6 +13,15 @@ const Layout = (props) => {
                 </form>
             </nav>
             {props.children}
+            <footer className="bg-light mt-3 pt-5 pb-5 pl-3 pr-3">
+                <div className="row justify-content-end mb-3">
+                    <a className="pr-4" href="#top">Go to top</a>
+                </div>
+                <p>This site is intended to improving the messy UI of LingQ, only for practice purposes. All rights belong to <a href="https://lingq.com">LingQ.com</a></p>
+                <p>Made by <a href="https://github.com/donjosef" target="_blank">Giuseppe Montanaro</a></p>
+                <p>Built with <a href="https://getbootstrap.com/">Bootstrap</a>, <a href="https://bootswatch.com/simplex/">Bootswatch</a> and <a href="https://reactjs.org/">React</a>
+                </p>
+            </footer>
         </>
     )
 }
