@@ -1,3 +1,7 @@
+.toggle-modal {
+    display: none !important;   
+}
+
 .course__title {
     font-size: 2rem;
 }
@@ -9,6 +13,10 @@
 }
 
 @media (max-width: 768px) {
+    .toggle-modal {
+        display: block !important;
+    }
+
     .course__left {
         min-width: 100%;
     }
