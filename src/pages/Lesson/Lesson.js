@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import AudioPlayer from 'react-audio-player'
+import BackLink from '../../components/BackLink/BackLink'
 import { useParams } from 'react-router-dom'
 
 import './Lesson.css'
@@ -19,11 +20,6 @@ const Lesson = () => {
             })
     }, [])
 
-    useEffect(() => {
-        console.log(audioRef.current.audioEl.current)
-        console.log(audioRef.current.audioEl.current.getAttribute('title'))
-    }, [])
-
     let transcript = ""
     if (lesson.tokenizedText) {
         transcript = lesson.tokenizedText
@@ -31,9 +27,9 @@ const Lesson = () => {
             .join('\n')
     }
 
-
     return (
         <main className="container container-spacing">
+            <BackLink path={'/course/' + lesson.collectionId}/>
             <section className="card lesson">
                 <div className="card-header">
                     <h1 className="lesson__title">{lesson.title}</h1>

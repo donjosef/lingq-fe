@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Card from '../../components/Card/Card'
 import Modal from '../../components/Modal/Modal'
+import BackLink from '../../components/BackLink/BackLink'
 import CourseDetails from '../../components/CourseDetails/CourseDetails'
 import { useHistory, useParams } from 'react-router-dom'
 
@@ -37,6 +38,7 @@ const Course = (props) => {
 
     return (
         <main className="container container-spacing">
+            <BackLink path='/courses'/>
             <h1 className="course__title mb-5">{course.title}</h1>
             <button
                 className="toggle-modal btn btn-secondary mb-3"
