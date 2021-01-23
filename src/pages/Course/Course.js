@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Card from '../../components/Card/Card'
 import Modal from '../../components/Modal/Modal'
 import CourseDetails from '../../components/CourseDetails/CourseDetails'
-import { useParams } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 
 import './Course.css'
 
@@ -10,6 +10,7 @@ const Course = (props) => {
     const [course, setCourse] = useState({})
     const [isModalVisible, setIsModalVisible] = useState(false)
     const params = useParams()
+    const history = useHistory()
 
     useEffect(() => {
         const lang = localStorage.lang
@@ -22,12 +23,16 @@ const Course = (props) => {
     }, [])
 
     const handleModal = () => {
-        if(!document.body.getAttribute('style')) {
+        if (!document.body.getAttribute('style')) {
             document.body.style.overflowY = 'hidden'
         } else {
             document.body.removeAttribute('style')
         }
         setIsModalVisible((visible) => !visible)
+    }
+
+    const handleStartLesson = (contentId) => {
+        history.push('/lesson/' + contentId)
     }
 
     return (
@@ -44,7 +49,11 @@ const Course = (props) => {
             <section className="row align-items-start">
                 <section className="row col-8 course__left">
                     {course.lessons && course.lessons.map(lesson => (
-                        <Card key={lesson.contentId} data={lesson} type="lesson" onBtnClick={() => { }} />
+                        <Card
+                            key={lesson.contentId}
+                            data={lesson}
+                            type="lesson"
+                            onBtnClick={handleStartLesson} />
                     ))}
                 </section>
                 <section className="ml-3 col-4 course__right">
