@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import FirstLogPage from './pages/FirstLogPage/FirstLogPage'
 import Layout from './components/Layout/Layout'
 import Courses from './pages/Courses/Courses'
-import Course from './pages/Course/Course'
+import Course from './pages/Course/Course' 
+import Lesson from './pages/Lesson/Lesson' 
 import { Route, Switch, Redirect, useHistory } from 'react-router-dom'
 
 import './App.css';
@@ -35,6 +36,7 @@ function App() {
             <Switch>
               <Route path="/courses/:page?" component={Courses} />
               <Route path="/course/:pk" component={Course} />
+              <Route path="/lesson/:contentId" component={Lesson}/> 
               <Redirect from="/" to="/courses" />
             </Switch>
           </Layout>
