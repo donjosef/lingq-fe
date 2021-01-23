@@ -1,6 +1,8 @@
 import React from 'react'
 import './Card.css'
 
+import {formatTime} from '../../utilities'
+
 const Card = ({ data, onBtnClick, type }) => {
     let cardClasses = ["col-md-4", "col-sm-6", "mb-5"] //in courses there will be multiple columns
     let leftColumn = "col-12"
@@ -25,7 +27,7 @@ const Card = ({ data, onBtnClick, type }) => {
                             <p className="card-text">Lessons: {data.lessonsCount}</p>
                         ) : (
                             <p className="card-text">
-                                Duration: {Math.floor(data.duration / 60 )}:{data.duration % 60}min
+                                Duration: {formatTime(data.duration)}
                             </p>
                         )}
                         <p className="card-text">Level: {data.level}</p>
