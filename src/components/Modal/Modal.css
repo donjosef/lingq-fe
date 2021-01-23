@@ -1,0 +1,29 @@
+.dialog {
+    position: fixed;
+    overflow-y: scroll; 
+    background-color: #fff;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 15px;
+    z-index: 10;
+    opacity: 0;
+    transform: scale(0.97);
+    animation: modal-open 0.2s 0.15s forwards;
+}
+
+.dialog__header {
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #eee;
+}
+
+@keyframes modal-open {
+    to {
+        opacity: 1;
+        transform: scale(1)
+    }
+}
