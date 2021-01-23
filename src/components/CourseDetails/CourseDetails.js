@@ -1,8 +1,15 @@
 import React from 'react'
 import './CourseDetails.css'
 
+import { formatTime } from '../../utilities'
+
 const CourseDetails = ({ course }) => {
 
+    let courseDuration = 0
+    if (course.lessons) {
+        courseDuration = course.lessons.reduce((total, currLesson) => total + currLesson.duration, 0)
+    }
+    
     return (
         <aside className="course-details">
             <div className="course-details__img-container mb-3">
@@ -10,6 +17,14 @@ const CourseDetails = ({ course }) => {
             </div>
             <div className="course-details__body">
                 <p className="course-details__description">{course.description}</p>
+                <p>
+                    <strong>Lessons: </strong>
+                    {course.lessons && course.lessons.length}
+                </p>
+                <p>
+                    <strong>Duration: </strong>
+                    {formatTime(courseDuration)}
+                </p>
                 {course.provider && (
                     <p>
                         <strong>Provided by: </strong>
