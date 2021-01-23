@@ -33,7 +33,7 @@ const Card = ({ data, onBtnClick, type }) => {
                         <p className="card-text">Level: {data.level}</p>
                         <p className="card-text">Difficulty: {data.difficulty}</p>
                         <button
-                            onClick={() => onBtnClick(data.pk)}
+                            onClick={() => onBtnClick(data.pk || data.contentId)}
                             className={`${type === 'course' && 'course__btn'} btn btn-outline-primary`}>
                             {type === 'course' ? 'START COURSE' : 'START LESSON'}
                         </button>
