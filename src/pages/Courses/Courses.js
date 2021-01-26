@@ -3,6 +3,7 @@ import Select from '../../components/Select/Select'
 import Card from '../../components/Card/Card'
 import Loader from '../../components/Loader'
 import Pagination from 'react-js-pagination'
+import BackLink from '../../components/BackLink/BackLink'
 import useSelect from '../../hooks/useSelect'
 import { useHistory, useParams } from 'react-router-dom'
 import { useCategory } from '../../Context/CategoryContext'
@@ -15,7 +16,7 @@ const Courses = () => {
     const [activePage, setActivePage] = useState(1)
     const history = useHistory()
     const params = useParams()
-    const { category } = useCategory()
+    const { category, onChangeCategory } = useCategory()
     const { langValue, levelValue, setLangValue, setLevelValue } = useSelect()
 
     useEffect(() => {
@@ -55,8 +56,13 @@ const Courses = () => {
         history.push('/course/' + pk)
     }
 
+    const handleResetCategory = () => {
+        onChangeCategory('')
+    }
+
     return (
         <main className="container container-spacing">
+            {category ? <BackLink onClick={handleResetCategory} path="/courses"/> : null}
             <form className="form-inline courses__controls">
                 <Select type="lang" value={langValue} onChange={setLangValue} />
                 <Select type="level" value={levelValue} onChange={setLevelValue} />
