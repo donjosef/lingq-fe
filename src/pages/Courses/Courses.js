@@ -5,6 +5,7 @@ import Loader from '../../components/Loader'
 import Pagination from 'react-js-pagination'
 import useSelect from '../../hooks/useSelect'
 import { useHistory, useParams } from 'react-router-dom'
+import { useCategory } from '../../Context/CategoryContext'
 import './Courses.css'
 
 const Courses = () => {
@@ -14,7 +15,7 @@ const Courses = () => {
     const [activePage, setActivePage] = useState(1)
     const history = useHistory()
     const params = useParams()
-
+    const { category } = useCategory()
     const { langValue, levelValue, setLangValue, setLevelValue } = useSelect()
 
     useEffect(() => {
@@ -28,18 +29,22 @@ const Courses = () => {
         const level = levelValue || localStorage['level']
 
         setCoursesLoading(true)
-        fetch(`http://localhost:4000/courses/${lang}/${level}/${params.page || activePage}`)
+        fetch(`http://localhost:4000/courses/${lang}/${level}/${params.page || activePage}/${category ? category : ''}`)
             .then(res => res.json())
             .then(courses => {
                 setCourses(courses.results)
                 setCount(courses.count)
                 setCoursesLoading(false)
             })
-    }, [langValue, levelValue, activePage])
+    }, [langValue, levelValue, activePage, category])
 
     const handleChangePage = (page) => {
         setActivePage(page)
-        history.push('/courses/' + page)
+        if(category) {
+            history.push(`/courses/${category}/${page}`)
+        } else {
+            history.push(`/courses/${page}`)
+        }
     }
 
     const handleStartCourse = (pk) => {
