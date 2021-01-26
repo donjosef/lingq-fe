@@ -14,6 +14,8 @@ const Layout = (props) => {
         if(categoryValue) {
             onChangeCategory(categoryValue)
             history.push('/courses/' + categoryValue)
+
+            inputRef.current.value = ""
         }
     }
 
