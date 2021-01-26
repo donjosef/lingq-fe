@@ -7,6 +7,8 @@ import BackLink from '../../components/BackLink/BackLink'
 import useSelect from '../../hooks/useSelect'
 import { useHistory, useParams } from 'react-router-dom'
 import { useCategory } from '../../Context/CategoryContext'
+
+import { API } from '../../API'
 import './Courses.css'
 
 const Courses = () => {
@@ -30,8 +32,7 @@ const Courses = () => {
         const level = levelValue || localStorage['level']
 
         setCoursesLoading(true)
-        fetch(`http://localhost:4000/courses/${lang}/${level}/${params.page || activePage}/${category ? category : ''}`)
-            .then(res => res.json())
+        API(`http://localhost:4000/courses/${lang}/${level}/${params.page || activePage}/${category ? category : ''}`)
             .then(courses => {
                 setCourses(courses.results)
                 setCount(courses.count)
@@ -45,7 +46,7 @@ const Courses = () => {
 
     const handleChangePage = (page) => {
         setActivePage(page)
-        if(category) {
+        if (category) {
             history.push(`/courses/${category}/${page}`)
         } else {
             history.push(`/courses/${page}`)
@@ -62,7 +63,7 @@ const Courses = () => {
 
     return (
         <main className="container container-spacing">
-            {category ? <BackLink onClick={handleResetCategory} path="/courses"/> : null}
+            {category ? <BackLink onClick={handleResetCategory} path="/courses" /> : null}
             <form className="form-inline courses__controls">
                 <Select type="lang" value={langValue} onChange={setLangValue} />
                 <Select type="level" value={levelValue} onChange={setLevelValue} />

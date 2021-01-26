@@ -6,6 +6,7 @@ import CourseDetails from '../../components/CourseDetails/CourseDetails'
 import Loader from '../../components/Loader'
 import { useHistory, useParams } from 'react-router-dom'
 
+import { API } from '../../API'
 import './Course.css'
 
 const Course = (props) => {
@@ -18,8 +19,7 @@ const Course = (props) => {
     useEffect(() => {
         const lang = localStorage.lang
 
-        fetch(`http://localhost:4000/course/${lang}/${params.pk}/`)
-            .then(res => res.json())
+        API(`http://localhost:4000/course/${lang}/${params.pk}/`)
             .then(course => {
                 setCourse(course)
                 setCourseLoading(false)

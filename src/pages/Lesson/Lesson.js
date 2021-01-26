@@ -3,6 +3,7 @@ import AudioPlayer from 'react-audio-player'
 import BackLink from '../../components/BackLink/BackLink'
 import { useParams } from 'react-router-dom'
 
+import { API } from '../../API'
 import './Lesson.css'
 
 const Lesson = () => {
@@ -12,9 +13,7 @@ const Lesson = () => {
 
     useEffect(() => {
         const lang = localStorage.lang
-
-        fetch(`http://localhost:4000/lesson/${lang}/${params.contentId}`)
-            .then(res => res.json())
+        API(`http://localhost:4000/lesson/${lang}/${params.contentId}`)
             .then(lesson => {
                 setLesson(lesson)
             })
