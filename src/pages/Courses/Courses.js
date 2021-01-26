@@ -22,14 +22,17 @@ const Courses = () => {
     const { langValue, levelValue, setLangValue, setLevelValue } = useSelect()
 
     useEffect(() => {
-        if (langValue) { //everytime langValue changes set new value on localstorage
-            localStorage.lang = langValue
-        }
-        if (levelValue) { //everytime levelValue changes set new value on localstorage
-            localStorage.level = levelValue
-        }
-        const lang = langValue || localStorage['lang']
-        const level = levelValue || localStorage['level']
+        //everytime langValue changes set new value on localstorage
+        localStorage.lang = langValue
+
+        //everytime levelValue changes set new value on localstorage
+        localStorage.level = levelValue
+
+    }, [langValue, levelValue])
+
+    useEffect(() => {
+        const lang = langValue
+        const level = levelValue
 
         setCoursesLoading(true)
         API(`http://localhost:4000/courses/${lang}/${level}/${params.page || activePage}/${category ? category : ''}`)
