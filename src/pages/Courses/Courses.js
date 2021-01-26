@@ -38,6 +38,10 @@ const Courses = () => {
             })
     }, [langValue, levelValue, activePage, category])
 
+    useEffect(() => {
+        setActivePage(1)
+    }, [category])
+
     const handleChangePage = (page) => {
         setActivePage(page)
         if(category) {
