@@ -2,16 +2,16 @@ import React, { useState, useEffect } from 'react'
 import FirstLogPage from './pages/FirstLogPage/FirstLogPage'
 import Layout from './components/Layout/Layout'
 import Courses from './pages/Courses/Courses'
-import Course from './pages/Course/Course' 
-import Lesson from './pages/Lesson/Lesson' 
+import Course from './pages/Course/Course'
+import Lesson from './pages/Lesson/Lesson'
 import { Route, Switch, Redirect, useHistory } from 'react-router-dom'
+import { CategoryProvider } from './Context/CategoryContext'
 
 import './App.css';
 
 function App() {
   const [firstLog, setFirstLog] = useState(!localStorage['lang'] || !localStorage['level'])
   const history = useHistory()
-
   const handleLogin = () => {
     setFirstLog(false)
     history.replace('/courses')
@@ -32,14 +32,17 @@ function App() {
 
         </>
       ) : (
-          <Layout>
-            <Switch>
-              <Route path="/courses/:page?" component={Courses} />
-              <Route path="/course/:pk" component={Course} />
-              <Route path="/lesson/:contentId" component={Lesson}/> 
-              <Redirect from="/" to="/courses" />
-            </Switch>
-          </Layout>
+          <CategoryProvider>
+            <Layout>
+              <Switch>
+                <Route exact path="/courses/:page(\d+)?" component={Courses} />
+                <Route exact path="/courses/:category?/:page(\d+)?" component={Courses} />
+                <Route path="/course/:pk" component={Course} />
+                <Route path="/lesson/:contentId" component={Lesson} />
+                <Redirect from="/" to="/courses" />
+              </Switch>
+            </Layout>
+          </CategoryProvider>
         )}
     </div>
   );
