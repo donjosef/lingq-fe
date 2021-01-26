@@ -1,15 +1,30 @@
-import React from 'react'
+import React, { useRef } from 'react'
+import { useHistory } from 'react-router-dom'
+import { useCategory } from '../../Context/CategoryContext'
 import './Layout.css'
 
 const Layout = (props) => {
+    const inputRef = useRef()
+    const history = useHistory()
+    const { onChangeCategory } = useCategory()
+
+    const getCourses = (e) => {
+        e.preventDefault()
+        const categoryValue = inputRef.current.value
+        if(categoryValue) {
+            onChangeCategory(categoryValue)
+            history.push('/courses/' + categoryValue)
+        }
+    }
+
     return (
         <>
             <nav className="navbar navbar-light bg-light">
                 <a className="navbar-brand text-info" href="#">LINGQ PRO</a>
 
-                <form className="form-inline navbar__form">
-                    <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                    <button className="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+                <form className="form-inline navbar__form" onSubmit={getCourses}>
+                    <input ref={inputRef} className="form-control mr-sm-2" type="search" placeholder="Search courses" aria-label="Search" />
+                    <button className="btn btn-outline-info my-2 my-sm-0" type="submit">Go</button>
                 </form>
             </nav>
             {props.children}
