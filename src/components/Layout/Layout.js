@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { useCategory } from '../../Context/CategoryContext'
 import './Layout.css'
 
@@ -22,7 +22,7 @@ const Layout = (props) => {
     return (
         <>
             <nav className="navbar navbar-light bg-light">
-                <a className="navbar-brand text-info" href="#">LINGQ PRO</a>
+                <Link className="navbar-brand text-info" to="/">LINGQ PRO</Link>
 
                 <form className="form-inline navbar__form" onSubmit={getCourses}>
                     <input ref={inputRef} className="form-control mr-sm-2" type="search" placeholder="Search courses" aria-label="Search" />
