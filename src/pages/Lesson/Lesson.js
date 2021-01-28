@@ -13,7 +13,7 @@ const Lesson = () => {
 
     useEffect(() => {
         const lang = localStorage.lang
-        API(`http://localhost:4000/lesson/${lang}/${params.contentId}`)
+        API(`/lesson/${lang}/${params.contentId}`)
             .then(lesson => {
                 setLesson(lesson)
             })
@@ -26,7 +26,7 @@ const Lesson = () => {
                 text: transcript //transcript will be available by the time this effect will execute
             }
 
-            fetch('http://localhost:4000/translate', {
+            fetch('/translate', {
                 headers: {
                     'Content-Type': 'application/json'
                 },

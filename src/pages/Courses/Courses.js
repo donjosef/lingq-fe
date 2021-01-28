@@ -35,7 +35,7 @@ const Courses = () => {
         const level = levelValue
 
         setCoursesLoading(true)
-        API(`http://localhost:4000/courses/${lang}/${level}/${params.page || activePage}/${category ? category : ''}`)
+        API(`/courses/${lang}/${level}/${params.page || activePage}/${category ? category : ''}`)
             .then(courses => {
                 setCourses(courses.results)
                 setCount(courses.count)
