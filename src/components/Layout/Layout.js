@@ -35,7 +35,7 @@ const Layout = (props) => {
                     <a className="pr-4" href="#top">Go to top</a>
                 </div>
                 <p>This site is intended to improving the messy UI of LingQ, only for practice purposes. All rights belong to <a href="https://lingq.com">LingQ.com</a></p>
-                <p>Made by <a href="https://github.com/donjosef" target="_blank">Giuseppe Montanaro</a></p>
+                <p>Made by <a href="https://github.com/donjosef" target="_blank" rel="noreferrer">Giuseppe Montanaro</a></p>
                 <p>Built with <a href="https://getbootstrap.com/">Bootstrap</a>, <a href="https://bootswatch.com/simplex/">Bootswatch</a> and <a href="https://reactjs.org/">React</a>
                 </p>
             </footer>

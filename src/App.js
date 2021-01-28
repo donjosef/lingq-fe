@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import FirstLogPage from './pages/FirstLogPage/FirstLogPage'
 import Layout from './components/Layout/Layout'
 import Courses from './pages/Courses/Courses'
