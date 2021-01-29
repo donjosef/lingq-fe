@@ -13,7 +13,7 @@ const Lesson = () => {
 
     useEffect(() => {
         const lang = localStorage.lang
-        API(`/lesson/${lang}/${params.contentId}`)
+        API(`/api/lesson/${lang}/${params.contentId}`)
             .then(lesson => {
                 setLesson(lesson)
             })

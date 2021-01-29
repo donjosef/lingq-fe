@@ -19,7 +19,7 @@ const Course = (props) => {
     useEffect(() => {
         const lang = localStorage.lang
 
-        API(`/course/${lang}/${params.pk}/`)
+        API(`api/course/${lang}/${params.pk}/`)
             .then(course => {
                 setCourse(course)
                 setCourseLoading(false)
